@@ -1,71 +1,76 @@
-# Personal Portfolio Template
+# Baranx Portfolio Template
 
-A modern, responsive, and customizable personal portfolio website template built for developers, designers, freelancers, and other creative professionals.
+A modern, responsive, and customizable personal portfolio website template designed for developers, designers, freelancers, and creative professionals.
 
-The template features a clean interface, smooth animations, responsive layouts, and interactive UI elements designed to create a polished personal portfolio experience.
+The template combines a clean visual design with smooth animations and interactive elements to provide a polished portfolio experience.
 
 ## Features
 
-* Fully responsive design for desktop, tablet, and mobile devices
+* Fully responsive design
 * Modern and clean user interface
 * Smooth scrolling between sections
 * Scrollspy navigation
 * Custom animated cursor
 * Scroll progress indicator
 * Scroll-to-top button
-* Split-screen opening animation
-* Responsive hamburger menu for mobile devices
+* Split-screen intro animation
+* Responsive hamburger menu
 * Smooth UI animations and interactions
 * Easy-to-customize HTML, CSS, and JavaScript
 * Lightweight and dependency-free
+* No build tools or frameworks required
 
 ## Project Structure
 
 ```text
-personal-portfolio/
+Baranx-Portfolio-Template/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 ├── license.txt
-├── README.txt
+├── README.md
 │
 └── assets/
     └── images/
 ```
 
-### File Overview
+## File Overview
 
 | File / Directory | Description                                        |
 | ---------------- | -------------------------------------------------- |
 | `index.html`     | Website structure and content                      |
-| `style.css`      | Layout, styling, animations, and responsive design |
-| `script.js`      | Interactive features and animations                |
-| `assets/images/` | Portfolio images and other visual assets           |
+| `style.css`      | Styling, layout, animations, and responsive design |
+| `script.js`      | Interactive functionality and animations           |
+| `assets/images/` | Images and visual assets                           |
 | `license.txt`    | License and usage terms                            |
-| `README.txt`     | Project documentation                              |
+| `README.md`      | Project documentation                              |
 
 ## Getting Started
 
-### 1. Download the Template
+### Clone the Repository
 
-Download or clone this repository to your local machine.
-
-```bash
-git clone https://github.com/theycreate88/personal-portfolio.git
-```
-
-### 2. Open the Project
-
-Navigate to the project directory:
+Clone the repository using Git:
 
 ```bash
-cd personal-portfolio
+git clone https://github.com/theycreate88/Baranx-Portfolio-Template.git
 ```
 
-### 3. Run the Website
+Or using GitHub CLI:
 
-No build tools or dependencies are required.
+```bash
+gh repo clone theycreate88/Baranx-Portfolio-Template
+```
+
+### Navigate to the Project
+
+```bash
+cd Baranx-Portfolio-Template
+```
+
+### Run the Website
+
+This project does not require Node.js, npm, or any additional dependencies.
 
 Simply open:
 
@@ -75,15 +80,15 @@ index.html
 
 in your preferred web browser.
 
-For the best development experience, you can also use the Live Server extension in Visual Studio Code.
+For development, you can use the **Live Server** extension in Visual Studio Code.
 
 ## Customization
 
-You can easily customize the template according to your personal brand and requirements.
+The template is designed to be easy to customize.
 
-### Content
+### Edit Website Content
 
-Edit `index.html` to update:
+Open `index.html` to modify:
 
 * Name
 * Profile information
@@ -94,71 +99,81 @@ Edit `index.html` to update:
 * Services
 * Contact information
 * Social media links
+* Navigation items
 
-### Styling
+### Customize the Design
 
-Edit `style.css` to customize:
+Use `style.css` to modify:
 
 * Colors
+* Typography
 * Fonts
 * Spacing
-* Typography
+* Layout
 * Animations
-* Section layouts
-* Responsive behavior
 * Cursor effects
+* Responsive behavior
+* Section styling
 
-### Interactions
+### Modify Interactions
 
-Edit `script.js` to modify or extend:
+Use `script.js` to customize:
 
 * Scroll animations
 * Navigation behavior
-* Scroll progress
+* Scroll progress indicator
 * Custom cursor
 * Scroll-to-top functionality
 * Intro animation
-* Mobile navigation
+* Mobile menu
+* Other interactive elements
 
-### Images
+### Replace Images
 
-Replace the images inside:
+Place your own images inside:
 
 ```text
 assets/images/
 ```
 
-with your own images while keeping the required file paths updated in `index.html` and `style.css`.
+Then update the corresponding image paths in `index.html` or `style.css` where required.
 
-## Browser Compatibility
+## Technologies
 
-The template is designed to work with modern web browsers, including:
-
-* Google Chrome
-* Mozilla Firefox
-* Microsoft Edge
-* Safari
-
-## Technologies Used
+This template is built using standard web technologies:
 
 * HTML5
 * CSS3
 * JavaScript
 * Responsive Web Design
 
-No external frameworks or backend services are required.
+No frontend frameworks, backend services, or package dependencies are required.
 
-## Recommended Development Environment
+## Browser Support
 
-For editing and customizing the template, the following tools are recommended:
+The template is designed for modern browsers, including:
 
-* Visual Studio Code
-* Live Server extension
-* Modern web browser
+* Google Chrome
+* Mozilla Firefox
+* Microsoft Edge
+* Safari
+
+For the best experience, use an up-to-date version of your preferred browser.
+
+## Development
+
+Recommended development setup:
+
+1. Install Visual Studio Code.
+2. Clone the repository.
+3. Open the project folder in Visual Studio Code.
+4. Install the Live Server extension.
+5. Open `index.html` using Live Server.
+6. Make your changes and refresh the browser to preview them.
 
 ## Support
 
-If you encounter an issue while customizing the template or have a suggestion, you can get in touch:
+For questions, customization assistance, bug reports, or suggestions, contact:
 
 **Email:** [abdulbasitsaddozai2006@gmail.com](mailto:abdulbasitsaddozai2006@gmail.com)
 
@@ -166,14 +181,16 @@ If you encounter an issue while customizing the template or have a suggestion, y
 
 This template is distributed under the terms specified in [`license.txt`](license.txt).
 
-Please review the license before using, modifying, redistributing, or reselling the template.
+Please read the license carefully before using, modifying, distributing, or reselling the template.
 
 ## Credits
 
 **Created by:** theycreate88- Abdul Basit
 
+**Repository:** `Baranx-Portfolio-Template`
+
 ---
 
-If you find this template useful, consider giving the repository a star and sharing it with others.
+If you find this template useful, consider starring the repository and sharing it with others.
 
 © 2026 theycreate88. All rights reserved.
