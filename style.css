@@ -1,0 +1,1941 @@
+  /* Reset all margins and paddings, set box sizing for consistency */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  /* Set background, font, dimensions and hide cursor globally */
+  html,
+  /* Additional body-specific styles (like hiding scrollbars) */
+  body {
+      background-color: #040c0e;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      width: 100%;
+      cursor: none;
+
+  }
+
+  /* Additional body-specific styles (like hiding scrollbars) */
+  body {
+      margin: 0;
+      font-family: sans-serif;
+      height: auto;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+  }
+
+  /* Hide scrollbars for WebKit browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+  }
+
+
+  /* Common cursor styles: fixed position, no pointer events */
+  .cursor-dot,
+  /* Larger outline circle for custom cursor */
+  .cursor-outline {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      top: 0;
+      left: 0;
+  }
+
+  /* Small inner dot for custom cursor */
+  .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: rgb(251, 118, 2);
+      transition: opacity 0.2s ease;
+  }
+
+  /* Larger outline circle for custom cursor */
+  .cursor-outline {
+      width: 28px;
+      height: 28px;
+      border: 2px solid rgb(251, 118, 2);
+      background-color: transparent;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .cursor-hover
+
+  /* Small inner dot for custom cursor */
+  .cursor-dot {
+      opacity: 0;
+  }
+
+  .cursor-hover
+
+  /* Larger outline circle for custom cursor */
+  .cursor-outline {
+      background-color: rgba(251, 118, 2, 0.555);
+      transform: translate(-50%, -50%) scale(2.5);
+      border: none;
+  }
+
+  /* Fixed scroll progress circle in corner */
+  #scrollProgress {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+  }
+
+  /* Rotate SVG so progress starts at top */
+  #scrollProgress svg {
+      transform: rotate(-90deg);
+  }
+
+  #scrollProgress circle {
+      fill: none;
+      stroke-width: 5;
+      stroke-linecap: round;
+  }
+
+  /* Background ring for progress tracker */
+  #scrollProgress circle:first-child {
+      stroke: #eee;
+      /* background ring */
+  }
+
+  /* Foreground animated progress stroke */
+  #progressCircle {
+      stroke: #f57c00;
+      /* progress color */
+      stroke-dasharray: 157;
+      stroke-dashoffset: 157;
+      transition: stroke-dashoffset 0.2s ease;
+  }
+
+
+
+  /* Start hidden except home */
+  /* Hidden section state (for reveal on scroll) */
+  section.hidden {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+
+  /* Animate to visible */
+  /* Visible section with animation */
+  section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+
+
+
+  /* Existing styles retained */
+  /* Logo styles */
+  #logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      margin-right: 10%;
+      border-bottom: 2px solid sandybrown;
+  }
+
+  /* Fixed header styles with flex layout */
+  header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      padding: 2% 10%;
+      gap: 50px;
+      z-index: 1000;
+      transition: background-color 0.8s ease;
+  }
+
+  /* Nav links inline for desktop */
+  /* Navigation links container (inline on desktop) */
+  #nav-links {
+      display: flex;
+      gap: 30px;
+  }
+
+  /* Individual nav links */
+  .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+  }
+
+  /* Hamburger hidden on desktop */
+  /* Hamburger menu icon for mobile */
+  #hamburger {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      margin-left: auto;
+  }
+
+  /* Sidebar (hidden by default) */
+  /* Sidebar navigation for smaller screens */
+  #sidebar {
+      position: fixed;
+      top: 0;
+      left: -270px;
+      width: 250px;
+      height: 100vh;
+      background-color: #111;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: left 0.3s ease-in-out;
+      z-index: 1100;
+  }
+
+  #sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+  }
+
+  /* Close button for sidebar */
+  #close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+  }
+
+  /* Responsive styles */
+  /* Responsive styles for tablets and phones */
+  @media (max-width: 768px) {
+
+      /* hides cursor on mobile devices */
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+
+      /* Logo styles */
+      #logo {
+
+          font-size: 1.2rem;
+      }
+
+      /* Navigation links container (inline on desktop) */
+      #nav-links {
+          display: none;
+      }
+
+      /* Hamburger menu icon for mobile */
+      #hamburger {
+          display: block;
+      }
+  }
+
+
+  /* Header background when scrolled */
+  header.scrolled {
+      background-color: rgba(0, 0, 0, 0.6);
+      /* Dark background on scroll */
+  }
+
+  /* Header links styles */
+  header a {
+      margin-right: 50px;
+      padding-top: 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.8s ease-in-out;
+
+  }
+
+  /* Hover effect on header links */
+  header a:hover {
+      transform: scaleX(10px);
+      border-bottom: 2px solid sandybrown;
+
+  }
+
+  /* Active nav link highlight */
+  .nav-link.active {
+      border-bottom: 2px solid sandybrown;
+  }
+
+
+  /* General section spacing */
+  section {
+      padding-top: 100px;
+      /* creates visible space */
+  }
+
+  /* Home section background and layout */
+  #home {
+
+      position: relative;
+      background-image: url('images/homeback.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      color: white;
+      z-index: 1;
+      overflow: hidden;
+  }
+
+  /* Dark overlay on home background */
+  #home::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  /* Greeting text layout */
+  #greetings {
+      padding-top: 13%;
+      font-size: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      gap: 10px;
+      text-align: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+
+  }
+
+  #greet {
+      display: flex;
+  }
+
+  #greet2 {
+      padding-left: 20px;
+      color: sandybrown;
+  }
+
+  #greetings p {
+      margin-top: 1%;
+      line-height: 1.5;
+      padding-left: 60px;
+      font-size: 18px;
+      color: rgba(220, 220, 220, 0.727);
+  }
+
+  /* Social icon layout */
+  #social-icons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 2;
+      position: relative;
+  }
+
+
+  /* Social icon styles */
+  #social-icons a {
+      color: white;
+      font-size: 24px;
+      transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  #social-icons a:hover {
+      color: sandybrown;
+      transform: scale(1.2);
+  }
+
+  /* Heading of every section*/
+
+  /* Section heading style */
+  .heading {
+
+      font-weight: 500;
+      font-size: 46px;
+      color: sandybrown;
+      display: inline-block;
+      /* shrink to fit text */
+      border-bottom: 2px solid sandybrown;
+  }
+
+  /* Center the heading using the section */
+  /* About section container */
+  #about {
+      background-color: #040c0e;
+      height: 100vh;
+      text-align: center;
+      /* center inline-block heading */
+      position: relative;
+  }
+
+  /* Overlay for About section */
+  #about::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  #aboutdiv {
+      margin-top: 5%;
+      padding-left: 20%;
+      display: flex;
+  }
+
+  #about b {
+      color: sandybrown;
+  }
+
+  /* Text details in About section */
+  #details {
+      font-family: Inter, sans-serif;
+      margin-left: 5%;
+      text-align: left;
+  }
+
+  #detailheading1 {
+
+      font-size: 36px;
+      color: gainsboro;
+      font-weight: 400;
+  }
+
+  #detailheading2 {
+
+      font-size: 24px;
+      color: sandybrown;
+      font-weight: 400;
+  }
+
+  #details p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgba(220, 220, 220, 0.523);
+  }
+
+  /* Download CV button */
+  #cv {
+
+      text-decoration: none;
+      background-color: sandybrown;
+      color: black;
+      font-weight: 400;
+      width: 180px;
+      height: 60px;
+      display: inline-block;
+      text-align: center;
+      align-content: center;
+      align-self: center;
+      border-radius: 40px;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  }
+
+  #cv:hover {
+      opacity: 0.9;
+      transform: scale(1.025);
+  }
+
+  /* Resume section container */
+  #resume {
+
+      background-color: #040c0e;
+      min-height: 100vh;
+      /* allow at least full screen */
+      text-align: center;
+      /* center inline-block heading */
+      position: relative;
+  }
+
+
+  #resume::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  /* Flex container for resume columns */
+  #resumediv {
+
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      margin-top: 2%;
+  }
+
+  /* Resume column styling */
+  .resumeinnerdiv {
+      margin-top: 2%;
+      text-align: left;
+      width: 550px;
+      border-left: 2px solid salmon;
+      padding-left: 2%;
+
+  }
+
+  /* Resume section titles */
+  .resumeheadings {
+      margin-bottom: 20px;
+      font-size: 36px;
+      color: white;
+  }
+
+  /* Field name (Education/Experience title) */
+  .fields_name {
+      font-size: 24px;
+      color: sandybrown;
+      margin-bottom: 10px;
+      margin-top: 30px;
+  }
+
+  /* Date styling for resume */
+  .date {
+      color: rgb(169, 173, 184);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+  }
+
+  /* Institution styling */
+  .institution {
+      color: white;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+  }
+
+  /* Description under resume items */
+  .resumedetails {
+      color: rgb(169, 173, 184);
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 10px;
+  }
+
+  /* Portfolio section */
+  #portfolio {
+
+      background-color: #040c0e;
+      min-height: 100vh;
+      text-align: center;
+      /* center inline-block heading */
+      position: relative;
+  }
+
+
+  #portfolio::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  #portfoliodiv {
+
+      justify-content: center;
+  }
+
+  /* Row of portfolio cards */
+  .portfolioinnerdiv {
+
+      margin-top: 40px;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+  }
+
+  /* Portfolio card layout */
+  .portfolioimg {
+
+      height: 250px;
+      width: 350px;
+
+
+      text-align: left;
+      align-content: flex-end;
+      padding-left: 10px;
+      padding-bottom: 10px;
+
+  }
+
+
+  .portfolioimgheading {
+      color: sandybrown;
+      font-weight: 600;
+      font-size: 20px;
+  }
+
+  .portfoliodetail {
+      font-size: 16px;
+      color: rgb(169, 173, 184);
+  }
+
+  /* Portfolio card layout */
+  .portfolioimg {
+      position: relative;
+      width: 350px;
+      height: 250px;
+      overflow: hidden;
+
+  }
+
+  /* Image fit in portfolio */
+  .portfolioimg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+  }
+
+  /* Scale image on hover */
+  /* Zoom image on hover */
+  .portfolioimg:hover img {
+      transform: scale(1.1);
+  }
+
+  /* Overlay text on hover */
+  .portfolioimg .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* dark overlay */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 10px;
+      text-align: center;
+  }
+
+  /* Show text on hover */
+  .portfolioimg:hover .content {
+      opacity: 1;
+  }
+
+  .portfolioimgheading {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 5px 0;
+  }
+
+  .portfoliodetail {
+      font-size: 1rem;
+      margin: 0;
+  }
+
+  /* Blog section container */
+  #blog {
+
+      background-color: #040c0e;
+      min-height: 100vh;
+      text-align: center;
+      /* center inline-block heading */
+      position: relative;
+  }
+
+
+  #blog::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  /* Layout of blog posts */
+  #blogdiv {
+      margin-top: 5%;
+      justify-content: center;
+      display: flex;
+      gap: 50px;
+  }
+
+  /* Individual blog post container */
+  .bloginnerdiv {
+      margin-top: 1%;
+      height: 400px;
+      width: 350px;
+
+      text-align: left;
+  }
+
+
+
+  /* Individual blog post container */
+  .bloginnerdiv {
+      color: sandybrown;
+      gap: 5px;
+  }
+
+  .blogimg-container {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      margin-bottom: 10px;
+  }
+
+  /* Blog image sizing */
+  .blogimg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease-in-out;
+  }
+
+  .blogimg:hover {
+      transform: scale(1.05);
+      /* Slight zoom */
+  }
+
+
+  .bloginnerdiv a {
+
+      text-decoration: none;
+
+  }
+
+  /* Blog post text */
+  .blog_p {
+      color: rgba(220, 220, 220, 0.688);
+      margin-top: 10px;
+      line-height: 1.5;
+      font-size: 20px;
+      transition: color 0.5s ease-in-out;
+  }
+
+  .blog_p:hover {
+
+      color: sandybrown;
+  }
+
+  /* Contact section styling */
+  #contact {
+      background-color: #040c0e;
+      min-height: 100vh;
+      text-align: center;
+      /* center inline-block heading */
+      position: relative;
+  }
+
+
+  #contact::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 0.5 = 50% darkness */
+      z-index: -1;
+  }
+
+  /* Flex layout of contact form/info */
+  #contactdiv {
+
+      display: flex;
+      gap: 150px;
+      justify-content: center;
+  }
+
+  /* Left/right side of contact */
+  .innercontactdiv {
+      margin-top: 80px;
+      width: 500px;
+      height: 800px;
+
+      text-align: left;
+      color: gainsboro;
+  }
+
+  .contactheading {
+      font-family: Inter, sans-serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 30px;
+  }
+
+  /* Input fields for contact form */
+  input {
+      padding-left: 10px;
+      height: 60px;
+      width: 550px;
+      margin-bottom: 20px;
+      background-color: #101021;
+      color: whitesmoke;
+      outline: transparent;
+      border: transparent;
+      border-radius: 6px;
+  }
+
+  input:focus {
+
+      outline: 1px solid sandybrown;
+  }
+
+  /* Message box */
+  textarea {
+
+      width: 550px;
+      height: 200px;
+      background-color: #101021;
+      outline: transparent;
+      border: transparent;
+      color: whitesmoke;
+      padding-left: 10px;
+      padding-top: 10px;
+  }
+
+  textarea:focus {
+
+      outline: 1px solid sandybrown;
+  }
+
+  /* Send message button */
+  #sendbutton {
+      margin-top: 20px;
+      height: 50px;
+      width: 150px;
+      border-radius: 40px;
+      justify-content: center;
+      background-color: sandybrown;
+      color: black;
+      opacity: 0.9;
+      transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+
+  }
+
+  #sendbutton:hover {
+
+      cursor: pointer;
+      opacity: 0.8;
+      transform: scale(1.025);
+  }
+
+  .innercontactheading {
+      margin-top: 20px;
+      font-size: 24px;
+      color: sandybrown;
+  }
+
+  #socials {
+
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 10px;
+  }
+
+  /* Social icons in contact section */
+  #contact-social-icons {
+      display: flex;
+      gap: 20px;
+
+      align-items: center;
+      margin-top: 20px;
+  }
+
+  #contact-social-icons a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #ccccccb5;
+      /* ring border color */
+      border-radius: 50%;
+      text-decoration: none;
+      color: white;
+      transition: all 0.8s ease, opacity 0.8s ease-in-out;
+      font-size: 20px;
+      opacity: 0.5;
+
+  }
+
+  #contact-social-icons a:hover {
+      border-color: sandybrown;
+      color: sandybrown;
+      transform: scale(1.1);
+      opacity: 1;
+  }
+
+  /* Footer styling */
+  footer {
+      padding-bottom: 20px;
+      justify-items: center;
+      color: white;
+      align-content: center;
+      background-color: #040c0e;
+  }
+
+  /* Fullscreen overlay */
+  /* Fullscreen animated overlay */
+  #circleCurtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeOut 1s ease 2.5s forwards;
+      overflow: hidden;
+  }
+
+  /* Center circle container */
+  /* Inner circle loader */
+  .circle {
+      background-color: rgb(75, 68, 68);
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      display: flex;
+      overflow: hidden;
+  }
+
+  /* Each half of the circle */
+  /* Half of the animated circle */
+  .half {
+      border: 1px solid black;
+      width: 50%;
+      height: 100%;
+      background-color: sandybrown;
+  }
+
+  /* Make them rounded like half of a circle */
+  /* Animate left half */
+  .left {
+      border-top-left-radius: 100% 100%;
+      border-bottom-left-radius: 100% 100%;
+      animation: slideLeft 2s ease forwards;
+  }
+
+  /* Animate right half */
+  .right {
+      border-top-right-radius: 100% 100%;
+      border-bottom-right-radius: 100% 100%;
+      animation: slideRight 2s ease forwards;
+  }
+
+  /* Animations */
+  /* Keyframe to move left curtain */
+  @keyframes slideLeft {
+      0% {
+          transform: translateX(0);
+      }
+
+      100% {
+          transform: translateX(-120%);
+      }
+  }
+
+  /* Keyframe to move right curtain */
+  @keyframes slideRight {
+      0% {
+          transform: translateX(0);
+      }
+
+      100% {
+          transform: translateX(120%);
+      }
+  }
+
+  /* Keyframe to fade loader overlay */
+  @keyframes fadeOut {
+      to {
+          opacity: 0;
+          visibility: hidden;
+      }
+  }
+
+
+  /* ---------- Base Styles (default for large screens) ---------- */
+  /* You already have your main CSS styles here */
+
+  /* ---------- Responsive Media Queries ---------- */
+
+
+
+
+  /* phones (up to 425px) */
+  @media (max-width: 426px) {
+
+       /* hides cursor on mobile devices */
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+      /* Set background, font, dimensions and hide cursor globally */
+      html,
+      /* Additional body-specific styles (like hiding scrollbars) */
+      body {
+          overflow-x: hidden;
+      }
+
+      input,
+      /* Message box */
+      textarea {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+      }
+
+      .resumeinnerdiv,
+      .innercontactdiv,
+      .bloginnerdiv,
+      /* Portfolio card layout */
+      .portfolioimg {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+      }
+
+
+
+
+      /* Greeting text layout */
+      #greetings {
+          padding-top: 30%;
+          font-size: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          position: relative;
+          z-index: 2;
+          gap: 10px;
+          text-align: center;
+          flex-wrap: wrap;
+          flex-direction: column;
+
+      }
+
+      #greet {
+          display: flex;
+      }
+
+      #greet2 {
+          padding-left: 10px;
+          color: sandybrown;
+      }
+
+      #greetings p {
+          margin-top: 2%;
+          line-height: 1.5;
+          padding-left: 0px;
+          font-size: 18px;
+          color: rgba(220, 220, 220, 0.727);
+          text-align: center;
+      }
+
+      /* Social icon layout */
+      #social-icons {
+          margin-top: 35%;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          z-index: 2;
+          position: relative;
+      }
+
+
+      /* About section container */
+      #about {
+          background-color: #040c0e;
+          min-height: 100vh;
+          text-align: center;
+          position: relative;
+          padding: 40px 20px;
+          /* optional for breathing room */
+          scroll-margin-top: 80px;
+
+
+      }
+
+      /* Section heading style */
+      .heading {
+          margin-bottom: 2%;
+          font-weight: 500;
+          font-size: 30px;
+          color: sandybrown;
+          display: inline-block;
+          /* shrink to fit text */
+          border-bottom: 2px solid sandybrown;
+      }
+
+
+
+      #aboutdiv {
+          margin-top: 5%;
+          padding-left: 0%;
+          display: flex;
+
+          flex-wrap: wrap;
+          /* ensures responsiveness */
+      }
+
+
+      #aboutdiv img {
+
+          height: 400px;
+          width: 280px;
+      }
+
+      /* Text details in About section */
+      #details {
+          font-family: Inter, sans-serif;
+          margin-left: 0%;
+          margin-bottom: 10%;
+          text-align: left;
+          margin-top: 10%;
+      }
+
+      #detailheading1 {
+
+          font-size: 36px;
+          color: gainsboro;
+          font-weight: 400;
+      }
+
+      #detailheading2 {
+
+          font-size: 24px;
+          color: sandybrown;
+          font-weight: 400;
+      }
+
+      #details p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: rgba(220, 220, 220, 0.523);
+      }
+
+      /* Download CV button */
+      #cv {
+
+          text-decoration: none;
+          background-color: sandybrown;
+          color: black;
+          font-weight: 400;
+          width: 180px;
+          height: 60px;
+          display: inline-block;
+          text-align: center;
+          align-content: center;
+          align-self: center;
+          border-radius: 40px;
+          transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      }
+
+      /* Resume section container */
+      #resume {
+
+          margin-top: 160%;
+      }
+
+      /* Flex container for resume columns */
+      #resumediv {
+          padding-left: 5px;
+          position: relative;
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          margin-top: 100px;
+
+      }
+
+      /* Resume column styling */
+      .resumeinnerdiv {
+          margin-top: 2%;
+          text-align: left;
+
+          border-left: 2px solid salmon;
+          padding-left: 2%;
+
+      }
+
+      /* Resume section titles */
+      .resumeheadings {
+          margin-bottom: 20px;
+          font-size: 18px;
+          color: white;
+      }
+
+      /* Field name (Education/Experience title) */
+      .fields_name {
+          font-size: 14px;
+          color: sandybrown;
+          margin-bottom: 10px;
+          margin-top: 30px;
+      }
+
+      /* Date styling for resume */
+      .date {
+          color: rgb(169, 173, 184);
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+      /* Institution styling */
+      .institution {
+          color: white;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+      /* Description under resume items */
+      .resumedetails {
+          color: rgb(169, 173, 184);
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+      #portfoliodiv {
+
+          justify-content: center;
+      }
+
+      /* Row of portfolio cards */
+      .portfolioinnerdiv {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          justify-content: center;
+          align-items: center;
+      }
+
+      /* Portfolio card layout */
+      .portfolioimg {
+
+          height: 250px;
+          width: 340px;
+          text-align: left;
+          align-content: flex-end;
+          padding-left: 10px;
+          padding-bottom: 10px;
+
+      }
+
+
+      .portfolioimgheading {
+          color: sandybrown;
+          font-weight: 600;
+          font-size: 20px;
+      }
+
+      .portfoliodetail {
+          font-size: 16px;
+          color: rgb(169, 173, 184);
+      }
+
+      /* Portfolio card layout */
+      .portfolioimg {
+          position: relative;
+          height: 250px;
+          overflow: hidden;
+
+      }
+
+
+      .portfolioimg:focus img {
+          transform: scale(1.1);
+      }
+
+      .portfolioimg:focus .content {
+          opacity: 1;
+      }
+
+      .portfolioimgheading {
+          font-size: 1.4rem;
+          font-weight: bold;
+          margin: 5px 0;
+      }
+
+      .portfoliodetail {
+          font-size: 1rem;
+          margin: 0;
+      }
+
+      /* Layout of blog posts */
+      #blogdiv {
+          margin-top: 20%;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+      }
+
+      /* Individual blog post container */
+      .bloginnerdiv {
+          margin-top: 1%;
+          height: 400px;
+          text-align: left;
+      }
+
+
+
+      /* Individual blog post container */
+      .bloginnerdiv {
+          color: sandybrown;
+          gap: 5px;
+          justify-content: center;
+          justify-items: center;
+
+      }
+
+      .blogimg-container {
+
+          width: 95%;
+          height: 200px;
+          overflow: hidden;
+          margin-bottom: 10px;
+      }
+
+      .blogimg:focus {
+          transform: scale(1.05);
+          /* Slight zoom */
+      }
+
+      /* Blog post text */
+      .blog_p {
+          color: rgba(220, 220, 220, 0.688);
+          margin-top: 10px;
+          line-height: 1.5;
+          font-size: 14px;
+          padding-left: 2%;
+          transition: color 0.5s ease-in-out;
+      }
+
+
+      /* Flex layout of contact form/info */
+      #contactdiv {
+
+          display: flex;
+          gap: 50px;
+          justify-content: center;
+          flex-direction: column;
+      }
+
+      /* Left/right side of contact */
+      .innercontactdiv {
+          margin-top: 20px;
+          padding-left: 10px;
+          height: 500px;
+          text-align: left;
+          color: gainsboro;
+      }
+
+      .contactheading {
+          text-align: center;
+          font-family: Inter, sans-serif;
+          font-size: 24px;
+          font-weight: 400;
+          color: white;
+          margin-bottom: 30px;
+      }
+
+      /* Input fields for contact form */
+      input {
+          padding-left: 10px;
+          width: 95%;
+          margin-bottom: 20px;
+          background-color: #101021;
+          color: whitesmoke;
+          outline: transparent;
+          border: transparent;
+          border-radius: 6px;
+      }
+
+      input:focus {
+
+          outline: 1px solid sandybrown;
+      }
+
+      /* Message box */
+      textarea {
+
+          width: 95%;
+          background-color: #101021;
+          outline: transparent;
+          border: transparent;
+          color: whitesmoke;
+          padding-left: 10px;
+          padding-top: 10px;
+      }
+
+      textarea:focus {
+
+          outline: 1px solid sandybrown;
+      }
+
+      /* Send message button */
+      #sendbutton {
+          margin-top: 20px;
+          height: 50px;
+          width: 150px;
+      }
+
+
+
+      .innercontactheading {
+          margin-top: 20px;
+          font-size: 18px;
+          color: sandybrown;
+      }
+
+      #socials {
+
+          font-size: 20px;
+          font-weight: 500;
+          margin-top: 10px;
+      }
+
+      /* Social icons in contact section */
+      #contact-social-icons {
+          display: flex;
+          gap: 20px;
+
+          align-items: center;
+          margin-top: 20px;
+      }
+
+      /* Footer styling */
+      footer {
+       
+          font-size: 12px;
+          padding-bottom: 20px;
+          justify-items: center;
+          color: white;
+          align-content: center;
+          background-color: #040c0e;
+      }
+
+  }
+
+
+
+
+  /* Small tablets / landscape phones (up to 678px) */
+  @media (min-width: 678px) and (max-width: 768px) {
+
+      /* Set background, font, dimensions and hide cursor globally */
+      html,
+      /* Additional body-specific styles (like hiding scrollbars) */
+      body {
+          overflow-x: hidden;
+      }
+
+      input,
+      /* Message box */
+      textarea {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+      }
+
+      .resumeinnerdiv,
+      .innercontactdiv,
+      .bloginnerdiv,
+      /* Portfolio card layout */
+      .portfolioimg {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+      }
+
+      /* Greeting text layout */
+      #greetings {
+          padding-top: 15%;
+          font-size: 25px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          position: relative;
+          z-index: 2;
+          gap: 10px;
+          text-align: center;
+          flex-wrap: wrap;
+          flex-direction: column;
+
+      }
+
+      #greet {
+          display: flex;
+      }
+
+      #greet2 {
+          padding-left: 10px;
+          color: sandybrown;
+      }
+
+      #greetings p {
+          margin-top: 3%;
+      }
+
+      /* Social icon layout */
+      #social-icons {
+          margin-top: 20%;
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          z-index: 2;
+          position: relative;
+      }
+
+
+
+      /* About section container */
+      #about {
+          background-color: #040c0e;
+          min-height: 100vh;
+          text-align: center;
+          position: relative;
+          padding: 40px 20px;
+          /* optional for breathing room */
+
+          scroll-margin-top: 80px;
+
+
+      }
+
+      /* Section heading style */
+      .heading {
+          margin-bottom: 2%;
+          font-weight: 500;
+          font-size: 30px;
+          color: sandybrown;
+          display: inline-block;
+          /* shrink to fit text */
+          border-bottom: 2px solid sandybrown;
+      }
+
+      #aboutdiv {
+          margin-top: 5%;
+          padding-left: 0%;
+          display: flex;
+          flex-direction: row;
+
+      }
+
+
+      #aboutdiv img {
+
+          height: 400px;
+          width: 280px;
+      }
+
+      /* Text details in About section */
+      #details {
+          font-family: Inter, sans-serif;
+          margin-left: 0%;
+          margin-bottom: 10%;
+          text-align: left;
+          margin-top: 0%;
+          padding-left: 20px;
+      }
+
+      #detailheading1 {
+
+          font-size: 36px;
+          color: gainsboro;
+          font-weight: 400;
+      }
+
+      #detailheading2 {
+
+          font-size: 24px;
+          color: sandybrown;
+          font-weight: 400;
+      }
+
+      #details p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: rgba(220, 220, 220, 0.523);
+      }
+
+      /* Download CV button */
+      #cv {
+
+          text-decoration: none;
+          background-color: sandybrown;
+          color: black;
+          font-weight: 400;
+          width: 180px;
+          height: 60px;
+          display: inline-block;
+          text-align: center;
+          align-content: center;
+          align-self: center;
+          border-radius: 40px;
+          transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      }
+
+      /* Resume section container */
+      #resume {
+          margin-top: 10%;
+          background-color: #040c0e;
+          min-height: 100vh;
+          /* allow at least full screen */
+          text-align: center;
+          /* center inline-block heading */
+
+      }
+
+      /* Flex container for resume columns */
+      #resumediv {
+          padding-left: 5px;
+          position: relative;
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          margin-top: 100px;
+
+      }
+
+      /* Resume column styling */
+      .resumeinnerdiv {
+          margin-top: 2%;
+          text-align: left;
+
+          border-left: 2px solid salmon;
+          padding-left: 2%;
+
+      }
+
+      /* Resume section titles */
+      .resumeheadings {
+          margin-bottom: 20px;
+          font-size: 18px;
+          color: white;
+      }
+
+      /* Field name (Education/Experience title) */
+      .fields_name {
+          font-size: 14px;
+          color: sandybrown;
+          margin-bottom: 10px;
+          margin-top: 30px;
+      }
+
+      /* Date styling for resume */
+      .date {
+          color: rgb(169, 173, 184);
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+      /* Institution styling */
+      .institution {
+          color: white;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+      /* Description under resume items */
+      .resumedetails {
+          color: rgb(169, 173, 184);
+          font-size: 12px;
+          font-weight: 400;
+          margin-bottom: 10px;
+      }
+
+
+      #portfoliodiv {
+
+          justify-content: center;
+      }
+
+      /* Row of portfolio cards */
+      .portfolioinnerdiv {
+
+          margin-top: 40px;
+          display: flex;
+
+          gap: 20px;
+          justify-content: center;
+          align-items: center;
+      }
+
+      /* Portfolio card layout */
+      .portfolioimg {
+
+          height: 200px;
+          width: 230px;
+
+          text-align: left;
+          align-content: flex-end;
+          padding-left: 10px;
+          padding-bottom: 10px;
+
+      }
+
+
+      .portfolioimgheading {
+          color: sandybrown;
+          font-weight: 600;
+          font-size: 20px;
+      }
+
+      .portfoliodetail {
+          font-size: 16px;
+          color: rgb(169, 173, 184);
+      }
+
+      /* Portfolio card layout */
+      .portfolioimg {
+          position: relative;
+
+          height: 250px;
+          overflow: hidden;
+
+      }
+
+      .portfolioimg:focus img {
+          transform: scale(1.1);
+      }
+
+
+      .portfolioimg:focus .content {
+          opacity: 1;
+      }
+
+      .portfolioimgheading {
+          font-size: 1.4rem;
+          font-weight: bold;
+          margin: 5px 0;
+      }
+
+      .portfoliodetail {
+          font-size: 1rem;
+          margin: 0;
+      }
+
+
+      /* Layout of blog posts */
+      #blogdiv {
+          margin-top: 20%;
+          justify-content: center;
+          display: flex;
+
+          gap: 10px;
+      }
+
+      /* Individual blog post container */
+      .bloginnerdiv {
+          margin-top: 1%;
+          height: 400px;
+
+
+          text-align: left;
+      }
+
+
+
+      /* Individual blog post container */
+      .bloginnerdiv {
+          color: sandybrown;
+          gap: 5px;
+          justify-content: center;
+          justify-items: center;
+
+      }
+
+      .blogimg-container {
+
+          width: 85%;
+          height: 200px;
+          overflow: hidden;
+          margin-bottom: 10px;
+      }
+
+
+
+      .blogimg:focus {
+          transform: scale(1.05);
+          /* Slight zoom */
+      }
+
+
+
+
+      /* Blog post text */
+      .blog_p {
+          color: rgba(220, 220, 220, 0.688);
+          margin-top: 10px;
+
+          font-size: 14px;
+          padding-left: 8%;
+
+      }
+
+
+      /* Flex layout of contact form/info */
+      #contactdiv {
+
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+
+      }
+
+      /* Left/right side of contact */
+      .innercontactdiv {
+          margin-top: 40px;
+          padding-left: 20px;
+          height: 500px;
+          text-align: left;
+          color: gainsboro;
+      }
+
+      .contactheading {
+          text-align: center;
+          font-family: Inter, sans-serif;
+          font-size: 24px;
+          font-weight: 400;
+          color: white;
+          margin-bottom: 30px;
+      }
+
+      /* Input fields for contact form */
+      input {
+          padding-left: 10px;
+          width: 95%;
+          margin-bottom: 20px;
+          background-color: #101021;
+          color: whitesmoke;
+          outline: transparent;
+          border: transparent;
+          border-radius: 6px;
+      }
+
+      input:focus {
+
+          outline: 1px solid sandybrown;
+      }
+
+      /* Message box */
+      textarea {
+
+          width: 95%;
+          background-color: #101021;
+          outline: transparent;
+          border: transparent;
+          color: whitesmoke;
+          padding-left: 10px;
+          padding-top: 10px;
+      }
+
+      textarea:focus {
+
+          outline: 1px solid sandybrown;
+      }
+
+      /* Send message button */
+      #sendbutton {
+          margin-top: 20px;
+
+
+      }
+
+      #sendbutton:focus {
+
+          cursor: pointer;
+          opacity: 0.8;
+          transform: scale(1.025);
+      }
+
+      .innercontactheading {
+          margin-top: 20px;
+          font-size: 18px;
+          color: sandybrown;
+      }
+
+      #socials {
+
+          font-size: 20px;
+          font-weight: 500;
+          margin-top: 10px;
+      }
+
+
+      /* Footer styling */
+      footer {
+          font-size: 12px;
+          padding-bottom: 20px;
+          justify-items: center;
+          color: white;
+          align-content: center;
+          background-color: #040c0e;
+          margin-top: 30px;
+      }
+
+  }
